@@ -29,15 +29,6 @@ const TrackingDescription = () => {
     fetchData()
   }, [])
 
-  // useEffect(() => {
-  //   if (requests.length !== 0) {
-  //     if (response.length === 0) {
-
-  //     }
-  //   }
-  // }, [requests])
-
-
   return (
     <div className='tracking-description'>
       <b>AI Recommendation:</b> <br />

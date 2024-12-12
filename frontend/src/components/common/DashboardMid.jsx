@@ -15,9 +15,8 @@ const DashboardMid = (props) => {
               FinTrack- Empowering Your Financial Growth.
             </h2>
             <p className="dashboard-mid-part1-content-text">
-              Streamline your request and approval workflows with FinTrack.
-              Enhance communication, tracking, and efficiency across departments
-              for all your purchasing needs.
+              Streamline your finance and management workflows with FinTrack.
+              Enhance control, tracking, and efficiency across all transaction need.
             </p>
           </div>
         </div>
