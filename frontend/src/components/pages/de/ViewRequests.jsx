@@ -156,7 +156,7 @@ const ViewRequests = ({
                 <td>{request.si}</td>
                 <td>{request.reportName}</td>
                 <td>{request.fromUser}</td>
-                <td>{request.grandTotal} INR</td>
+                <td>{request.grandTotal} $ AMOUNT </td>
                 <td className="icon-container">
                   <TrashIcon
                     onClick={(e) => {

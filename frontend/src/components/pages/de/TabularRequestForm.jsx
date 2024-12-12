@@ -209,7 +209,7 @@ const TabularRequestForm = () => {
         <button className="addRow-button pointer" onClick={handleAddRow}>
           Add Row
         </button>
-        <h2>Grand Total:{grandTotal} INR</h2>
+        <h2>Grand Total:${grandTotal}</h2>
       </div>
       <div className="div-submitButton">
         <button className="submitButton pointer" onClick={handleSubmit}>
