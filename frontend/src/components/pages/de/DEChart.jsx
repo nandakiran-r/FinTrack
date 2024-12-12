@@ -40,17 +40,17 @@ export const options = {
     },
 };
 
-const labels = ["PENDING", "APPROVED", "VERIFIED", "COMPLETED", "REQUESTS"];
+const labels = ["REQUESTS"];
 
 export function DEChart({ statistics }) {
-    const { requestPendingCount, requestApprovedCount, requestVerifiedCount, requestCompletedCount, requestCount } = statistics;
+    const { requestCount } = statistics;
     const data = {
         labels,
         datasets: [
             {
                 label: "",
-                data: [requestPendingCount, requestApprovedCount, requestVerifiedCount, requestCompletedCount, requestCount],
-                backgroundColor: ["#9c69f6", "#7f4dd8", "#9c69f6", "#7f4dd8", "#9c69f6",],
+                data: [ requestCount],
+                backgroundColor: ["#9c69f6",],
             },
         ],
     };

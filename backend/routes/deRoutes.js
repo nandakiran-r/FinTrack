@@ -4,8 +4,7 @@ const {
   dptEmployeeViewRequests,
   dptEmployeeCreateRequest,
   dptEmployeeFinishRequest,
-  // dptEmployeeStatistics,
-  // dptEmployeegetTracking,
+  dptEmployeeStatistics,
 } = require("../controller/deController");
 
 const router = express.Router();
@@ -14,8 +13,7 @@ router.get("/requests", verifyUser, dptEmployeeViewRequests);
 
 router.post("/addrequest", verifyUser, dptEmployeeCreateRequest);
 router.post("/remove-request", verifyUser, dptEmployeeFinishRequest);
-// router.get("/statistics", verifyUser, dptEmployeeStatistics);
-// router.get("/get-tracking", verifyUser, dptEmployeegetTracking);
+router.get("/statistics", verifyUser, dptEmployeeStatistics);
 
 
 module.exports = router;

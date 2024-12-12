@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import {
-  DEGetTrackingDetails
-} from '../../helpers/api-communicator'
 import TrackingList from './TrackingList'
 
 const Tracking = () => {
   const [tracking, setTracking] = useState()
   const token = localStorage.getItem('token')
-  useEffect(() => {
-    const getTracking = async () => {
-      let data
-      if (token) {
-        const { data: detokenData } = await DEGetTrackingDetails()
-        data = detokenData
-      }
-      setTracking(data)
-    }
-    getTracking()
-  }, [])
+  // useEffect(() => {
+  //   const getTracking = async () => {
+  //     let data
+  //     if (token) {
+  //       const { data: detokenData } = await DEget()
+  //       data = detokenData
+  //     }
+  //     setTracking(data)
+  //   }
+  //   getTracking()
+  // }, [])
   return (
     <div className="dashboard-mid-part2">
       <div className="dashboard-mid-part2-content">

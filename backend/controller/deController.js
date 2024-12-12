@@ -82,44 +82,28 @@ const dptEmployeeCreateRequest = async (request, response) => {
   }
 };
 
-// const dptEmployeeStatistics = async (request, response) => {
-//   const token = request.headers["x-access-token"];
-//   const user = jwt.decode(token);
-//   const userId = user.id;
+const dptEmployeeStatistics = async (request, response) => {
+  const token = request.headers["x-access-token"];
+  const user = jwt.decode(token);
+  const userId = user.id;
 
-//   try {
-//     const requestCount = await requestModel.countDocuments({ from: userId });
-//     const requestPendingCount = await requestModel.countDocuments({
-//       from: userId,
-//       $or: [{ tracking: "" }, { tracking: { $exists: false } }],
-//     });
-//     const requestApprovedCount = await requestModel.countDocuments({
-//       from: userId,
-//       tracking: { $ne: null },
-//     });
-//     const requestVerifiedCount = await requestModel.countDocuments({
-//       from: userId,
-//       tracking: "phverified",
-//     });
-//     const requestCompletedCount = await requestModel.countDocuments({
-//       from: userId,
-//       tracking: "definished",
-//     });
-//     response.json({
-//       status: "success",
-//       requestPendingCount: requestPendingCount,
-//       requestApprovedCount: requestApprovedCount,
-//       requestVerifiedCount: requestVerifiedCount,
-//       requestCompletedCount: requestCompletedCount,
-//       requestCount: requestCount,
-//     });
-//   } catch (error) {
-//     return response.json({
-//       status: "failed",
-//       message: "Something went wrong! Try again",
-//     });
-//   }
-// };
+  try {
+    const requestCount = await requestModel.countDocuments({ from: userId });
+    // let full;
+    // const requestTotal = (await requestModel.find({ from: userId }));
+    
+    // console.log(full)
+    response.json({
+      status: "success",
+      requestCount: requestCount,
+    });
+  } catch (error) {
+    return response.json({
+      status: "failed",
+      message: "Something went wrong! Try again",
+    });
+  }
+};
 
 const dptEmployeeFinishRequest = async (request, response) => {
   const { id } = request.body;
@@ -141,5 +125,5 @@ module.exports = {
   dptEmployeeViewRequests,
   dptEmployeeCreateRequest,
   dptEmployeeFinishRequest,
-  // dptEmployeeStatistics
+  dptEmployeeStatistics
 };

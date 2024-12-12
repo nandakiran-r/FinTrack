@@ -69,6 +69,19 @@ export const DEStatistics = async () => {
   }
 };
 
+export const API = async (question) => {
+  try {
+    const response = await axios.post("/api", {
+      "question": question
+    });
+    const data = await response.data;
+
+    return data;
+  } catch (error) {
+    toast.error("Something went wrong!");
+  }
+};
+
 export const DEGetTrackingDetails = async () => {
   try {
     const response = await axios.get("de/get-tracking", {
