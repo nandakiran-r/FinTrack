@@ -41,7 +41,7 @@ const TrackingDescription = () => {
   return (
     <div className='tracking-description'>
       <b>AI Recommendation:</b> <br />
-      {response?.answer?.content.replace('**', '\t') ?? ''}
+      {response?.answer?.content.replace('**', '\t') ?? 'Generating...'}
     </div>
   )
 }
