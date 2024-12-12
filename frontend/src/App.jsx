@@ -16,6 +16,7 @@ import DEDashboard from './components/pages/de/DEDashboard.jsx'
 import axios from 'axios'
 import DERequest from './components/pages/de/DERequest.jsx'
 import DEViewRequests from './components/pages/de/DEViewRequests.jsx'
+import Register from './components/auth/Register.jsx'
 
 axios.defaults.baseURL = 'http://localhost:5000'
 
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />}></Route>
         <Route path="/login" Component={Login}></Route>
+        <Route path="/register" Component={Register}></Route>
         <Route element={<UserRoutes />}>
           <Route path="/dashboard/" Component={DEDashboard}></Route>
           <Route path="/dashboard/new-expense" Component={DERequest}></Route>

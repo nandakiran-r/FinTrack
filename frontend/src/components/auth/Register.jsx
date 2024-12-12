@@ -3,9 +3,10 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate();
 
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,7 +14,7 @@ const Login = () => {
     return /\s/.test(s);
   }
 
-  function LoginUser(e) {
+  function RegisterUser(e) {
     e.preventDefault();
     if (email === "" || password === "") {
       toast.error("All Fields Required!");
@@ -21,15 +22,11 @@ const Login = () => {
       toast.warning("No spaces allowed in email field!");
     } else {
       axios
-        .post("/login", { email: email, password: password })
+        .post("/register", { username: username, email: email, password: password })
         .then((res) => {
           if (res.data.status === "success") {
-            var str = res.data.username;
-            var str2 = str.charAt(0).toUpperCase() + str.slice(1);
-            toast.success(str2 + " Login Successful");
-            localStorage.setItem("token", res.data.token);
-            localStorage.setItem("username", res.data.username);
-            navigate("/dashboard");
+            toast.success("User registered");
+            navigate("/login")
           } else if (res.data.status === "failed") {
             toast.error(res.data.message);
           } else {
@@ -39,21 +36,44 @@ const Login = () => {
     }
   }
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      navigate("/dashboard");
-    }
-  }, []);
-
   return (
     <div className="login">
       <div className="session">
         <div className="left"></div>
-        <form className="log-in" autoComplete="off" onSubmit={LoginUser}>
+        <form className="log-in" autoComplete="off" onSubmit={RegisterUser}>
           <h4>
             Welcome to <br /> <span className="brand">FinTrack</span>
           </h4>
-          <p>Welcome back! Log in to your track your finance</p>
+          <p>Register to your track your finance</p>
+          <div className="floating-label">
+            <input
+              placeholder="Username"
+              type="username"
+              name="username"
+              id="username"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+              autoComplete="off"
+              required
+            />
+            <label htmlFor="username">Username:</label>
+            <div className="icon">
+              <svg
+                enableBackground="new 0 0 100 100"
+                version="1.1"
+                viewBox="0 0 100 100"
+                xmlSpace="preserve"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g transform="translate(0 -952.36)">
+                  <path d="m17.5 977c-1.3 0-2.4 1.1-2.4 2.4v45.9c0 1.3 1.1 2.4 2.4 2.4h64.9c1.3 0 2.4-1.1 2.4-2.4v-45.9c0-1.3-1.1-2.4-2.4-2.4h-64.9zm2.4 4.8h60.2v1.2l-30.1 22-30.1-22v-1.2zm0 7l28.7 21c0.8 0.6 2 0.6 2.8 0l28.7-21v34.1h-60.2v-34.1z" />
+                </g>
+                <rect className="st0" width={100} height={100} fill="none" />
+              </svg>
+            </div>
+          </div>
           <div className="floating-label">
             <input
               placeholder="Email"
@@ -118,11 +138,11 @@ const Login = () => {
               </svg>
             </div>
           </div>
-          <div style={{display: "flex", alignItems: "center", justifyContent: 'space-between', width: '100%', flexDirection: 'row'}}>
-            <a style={{textDecoration: "none", color: "blueviolet", marginLeft: 20}} href="/register">Register</a>
-          <button type="submit" className="pointer">
-            Log in
-          </button>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: 'space-between', width: '100%', flexDirection: 'row' }}>
+            <a style={{ textDecoration: "none", color: "blueviolet", marginLeft: 20 }} href="/login">Login</a>
+            <button type="submit" className="pointer">
+              Register
+            </button>
           </div>
         </form>
       </div>
@@ -130,4 +150,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
